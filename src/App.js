@@ -2,6 +2,7 @@ import './App.css';
 import {useState} from "react";
 
 function App() {
+    const [title, setTitle] = useState('Let the countdown begin!')
     const [timeLeft, setTimeLeft] = useState(25 * 60); // initial state = 25 minutes
 
     const minutes = Math.floor(timeLeft/60)
@@ -10,6 +11,7 @@ function App() {
   return (
     <div className="App">
         <h1>Pomodoro Timer</h1>
+        <h2>{title}</h2>
 
         <div className="timer">
             <span>{minutes}</span>
