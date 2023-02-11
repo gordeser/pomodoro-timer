@@ -3,7 +3,7 @@ import {useRef, useState} from "react";
 
 function App() {
     const [title, setTitle] = useState('Let the countdown begin!')
-    const [timeLeft, setTimeLeft] = useState(10); // initial state = 25 minutes
+    const [timeLeft, setTimeLeft] = useState(3); // initial state = 25 minutes
 
     const minutes = Math.floor(timeLeft/60)
     const seconds = (timeLeft%60).toString().padStart(2, '0')
@@ -17,7 +17,7 @@ function App() {
                 if (timeLeft >= 1)
                     return timeLeft-1;
 
-                return 0
+                resetTimer()
             })
         }, 1000)
     }
@@ -49,7 +49,6 @@ function App() {
             <button onClick={stopTimer}>Stop</button>
             <button onClick={resetTimer}>Reset</button>
         </div>
-
 
     </div>
   );
