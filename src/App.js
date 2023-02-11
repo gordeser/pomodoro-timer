@@ -5,7 +5,7 @@ function App() {
     const [timeLeft, setTimeLeft] = useState(25 * 60); // initial state = 25 minutes
 
     const minutes = timeLeft/60
-    const seconds = timeLeft%60
+    const seconds = (timeLeft%60).toString().padStart(2, '0')
 
   return (
     <div className="App">
