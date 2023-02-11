@@ -27,6 +27,12 @@ function App() {
         setTitle('Keep it up!')
     }
 
+    const resetTimer = () => {
+        clearInterval(intervalRef.current)
+        setTitle('Ready to go another round?')
+        setTimeLeft(25 * 60)
+    }
+
   return (
     <div className="App">
         <h1>Pomodoro Timer</h1>
@@ -41,7 +47,7 @@ function App() {
         <div className="buttons">
             <button onClick={startTimer}>Start</button>
             <button onClick={stopTimer}>Stop</button>
-            <button>Reset</button>
+            <button onClick={resetTimer}>Reset</button>
         </div>
 
 
