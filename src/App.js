@@ -4,6 +4,7 @@ import {useRef, useState} from "react";
 function App() {
     const [title, setTitle] = useState('Let the countdown begin!')
     const [timeLeft, setTimeLeft] = useState(3); // initial state = 25 minutes
+    const [isRunning, setIsRunning] = useState(false)
 
     const minutes = Math.floor(timeLeft/60)
     const seconds = (timeLeft%60).toString().padStart(2, '0')
@@ -14,6 +15,7 @@ function App() {
         if (intervalRef.current !== null) return
 
         setTitle("You're doing great!")
+        setIsRunning(true)
         intervalRef.current = setInterval(() => {
             setTimeLeft(timeLeft => {
                 if (timeLeft >= 1)
@@ -30,6 +32,7 @@ function App() {
         clearInterval(intervalRef.current)
         intervalRef.current = null
         setTitle('Keep it up!')
+        setIsRunning(false)
     }
 
     const resetTimer = () => {
@@ -37,6 +40,7 @@ function App() {
         intervalRef.current = null
         setTitle('Ready to go another round?')
         setTimeLeft(25 * 60)
+        setIsRunning(false)
     }
 
   return (
@@ -51,8 +55,8 @@ function App() {
         </div>
 
         <div className="buttons">
-            <button onClick={startTimer}>Start</button>
-            <button onClick={stopTimer}>Stop</button>
+            {!isRunning && <button onClick={startTimer}>Start</button>}
+            {isRunning && <button onClick={stopTimer}>Stop</button>}
             <button onClick={resetTimer}>Reset</button>
         </div>
 
